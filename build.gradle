@@ -19,6 +19,7 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management' // 스프링부트 의존성 관리 플러그인
 
+
 group 'org.example'
 version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
@@ -30,4 +31,16 @@ repositories {
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    testImplementation 'org.junit.jupiter:junit-jupiter-api'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+    // lombok
+    compile('org.projectlombok:lombok')
+    testCompile "org.projectlombok:lombok"
+    annotationProcessor('org.projectlombok:lombok')
+    testAnnotationProcessor('org.projectlombok:lombok')
+}
+
+test {
+    useJUnitPlatform()
 }
