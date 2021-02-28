@@ -1,4 +1,4 @@
-package com.nawhew.awsboot.domain.posts;
+package com.nawhew.awsboot.posts.domain;
 
 import lombok.Builder;
 import lombok.Getter;
