@@ -1,5 +1,6 @@
 package com.nawhew.awsboot.posts.domain;
 
+import com.nawhew.awsboot.common.BaseTimeEntity;
 import com.nawhew.awsboot.posts.dto.PostsRequest;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter @NoArgsConstructor
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

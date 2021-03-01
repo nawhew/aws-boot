@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.net.URI;
+import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -45,6 +46,7 @@ public class PostsApiControllerTest {
         // given
         String title = "테스트 제목";
         String content = "테스트 내용입니다.";
+        LocalDateTime now = LocalDateTime.now();
 
         // when
         ResponseEntity<PostsResponse> responseEntity = 포스트_등록_됨(title, content);
@@ -56,6 +58,7 @@ public class PostsApiControllerTest {
         assertThat(postsResponse.getId()).isNotNull();
         assertThat(postsResponse.getTitle()).isEqualTo(title);
         assertThat(postsResponse.getContent()).isEqualTo(content);
+        assertThat(postsResponse.getCreatedDate()).isAfter(now);
     }
 
     @Test
