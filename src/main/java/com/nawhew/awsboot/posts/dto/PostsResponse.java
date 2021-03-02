@@ -14,7 +14,7 @@ public class PostsResponse {
     private String content;
     private String author;
     private LocalDateTime createdDate;
-    private LocalDateTime updatedDate;
+    private LocalDateTime modifiedDate;
 
     public static PostsResponse to(Posts posts) {
         return new PostsResponse(posts.getId()
