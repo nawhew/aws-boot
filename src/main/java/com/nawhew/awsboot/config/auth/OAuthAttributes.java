@@ -13,6 +13,9 @@ import java.util.Map;
 @Getter
 public class OAuthAttributes {
 
+    private static final String REGID_GOOGLE = "google";
+    private static final String REGID_NAVER = "naver";
+
     private Map<String, Object> attributes;
     private String nameAttributeKey;
     private String name;
@@ -39,12 +42,15 @@ public class OAuthAttributes {
 
     /**
      * OAuth2UserRequest 정보를 O-Auth 속성으로 변환
-     * @param registrationId 서비스 구분 코드 : 구글만 사용하여 필요 없으나 구글 로그인인지 구분을 위해 파라미터에 남김.
+     * @param registrationId 서비스 구분 코드 : google, naver 등을 구분 할 때 사용
      * @param userNameAttributeName OAuth2 로그인 진행시 키가 되는 필드 값 (PK 같은 의미)
      * @param attributes 속성값들(Map)
      * @return OAuth 속성들
      */
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes) {
+        if(REGID_NAVER.equals(registrationId)) {
+            return ofNaver(userNameAttributeName, attributes);
+        }
         return ofGoogle(userNameAttributeName, attributes);
     }
 
@@ -60,6 +66,25 @@ public class OAuthAttributes {
                 .email((String) attributes.get("email"))
                 .picture((String) attributes.get("picture"))
                 .attributes(attributes)
+                .nameAttributeKey(userNameAttributeName)
+                .build();
+    }
+
+    /**
+     * OAuth 속성을 네이버 인증에 맞추어 값을 세팅.
+     * 네아로(네이버 아이디 로그인)의 경우 response 아래에 정보가 있어 response에서 값을 꺼내와서 세팅
+     * @param userNameAttributeName
+     * @param attributes
+     * @return
+     */
+    private static OAuthAttributes ofNaver(String userNameAttributeName, Map<String, Object> attributes) {
+        Map<String, Object> response = (Map<String, Object>) attributes.get("response");
+        response.put("response", (String) response.get("name"));
+        return OAuthAttributes.builder()
+                .name((String) response.get("name"))
+                .email((String) response.get("email"))
+                .picture((String) response.get("profile_image"))
+                .attributes(response)
                 .nameAttributeKey(userNameAttributeName)
                 .build();
     }
