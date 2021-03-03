@@ -79,7 +79,7 @@ public class OAuthAttributes {
      */
     private static OAuthAttributes ofNaver(String userNameAttributeName, Map<String, Object> attributes) {
         Map<String, Object> response = (Map<String, Object>) attributes.get("response");
-        response.put("response", (String) response.get("name"));
+        response.put("response", response.get("name"));
         return OAuthAttributes.builder()
                 .name((String) response.get("name"))
                 .email((String) response.get("email"))
