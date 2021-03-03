@@ -1,4 +1,4 @@
-package com.nawhew.awsboot.config.auth.dto;
+package com.nawhew.awsboot.config.auth;
 
 import com.nawhew.awsboot.user.domain.Role;
 import com.nawhew.awsboot.user.domain.User;
@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Getter;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
-import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import java.util.Map;

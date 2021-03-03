@@ -1,12 +1,10 @@
 package com.nawhew.awsboot.config.auth;
 
-import com.nawhew.awsboot.config.auth.dto.OAuthAttributes;
 import com.nawhew.awsboot.config.auth.dto.SessionUser;
 import com.nawhew.awsboot.user.domain.User;
 import com.nawhew.awsboot.user.domain.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
