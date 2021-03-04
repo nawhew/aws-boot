@@ -37,6 +37,7 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testImplementation 'org.junit.jupiter:junit-jupiter-api'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    compile('org.springframework.security:spring-security-test')
 
     // lombok
     compile('org.projectlombok:lombok')
@@ -54,6 +55,6 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-mustache')
 }
 
-test {
+/*test {
     useJUnitPlatform()
-}
+}*/
