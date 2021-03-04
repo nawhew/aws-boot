@@ -51,6 +51,9 @@ dependencies {
     // h2
     compile('com.h2database:h2')
 
+    // mariadb
+    compile("org.mariadb.jdbc:mariadb-jdbc-client")
+
     // mustache
     compile('org.springframework.boot:spring-boot-starter-mustache')
 }
