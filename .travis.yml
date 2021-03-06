@@ -15,7 +15,7 @@ cache:
     - '$HOME/.gradle'
 
 # 푸쉬가 일어날 경우 수행 할 스크립트
-script: "./gradlew clean build"
+script: "sudo ./gradlew clean build"
 
 # CI 실행 완료시 메일로 알람
 notifications:
